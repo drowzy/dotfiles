@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: prototype class
+# key: protoc
+# --
+
+function ${1:Class}(options) {
+  if (!(this instanceof $1)) {
+    return new $1(options);
+  }
+
+  $0
+}
+
+$1.prototype.${2:method} = function () {
+
+};
+
+$1.prototype.${3:method} = function () {
+
+};
+
+$1.prototype.${4:method} = function () {
+
+};
+
+module.exports = $1;
