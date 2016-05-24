@@ -42,7 +42,9 @@ values."
      themes-megapack
      (ranger :variables
               ranger-show-preview t)
-     (shell :variables shell-default-term-shell "/usr/bin/zsh"
+     (shell :variables
+            shell-default-term-shell "/usr/bin/zsh"
+            shell-default-shell 'ansi-term
             shell-default-height 30
             shell-default-position 'bottom)
      syntax-checking
