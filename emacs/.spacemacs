@@ -29,6 +29,8 @@ values."
                       auto-completion-enable-help-tooltip t)
      ;; better-defaults
      emacs-lisp
+     (colors :variables
+             colors-enable-rainbow-identifiers nil)
      git
      markdown
      (org :variables
@@ -128,7 +130,7 @@ values."
                                :size 10
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.0)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -267,6 +269,17 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
+  ;; Autocompletion
+  (global-company-mode)
+  (yas-global-mode)
+
+  ;; spaceline related
+  ;; spaceline separators
+  ;; Valid Values: alternate, arrow, arrow-fade, bar, box, brace,
+  ;; butt, chamfer, contour, curve, rounded, roundstub, wave, zigzag,
+  ;; utf-8.
+  ;; note that changing this setting requires a full restart
+  (setq powerline-default-separator 'arrow-fade)
 
   ;; Org-babel
   (org-babel-do-load-languages
