@@ -31,7 +31,8 @@ values."
      emacs-lisp
      git
      markdown
-     org
+     (org :variables
+          org-enable-github-support t)
      javascript
      elixir
      erlang
@@ -124,7 +125,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 11
+                               :size 10
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -266,11 +267,24 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
+
+  ;; Org-babel
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+     (python . t)
+     (sh . t)
+     ))
+  ;; Line numbers
   (global-linum-mode)
+  ;; Neo tree theme
   (setq neo-theme 'nerd)
+  ;; Truncate lines
   (setq-default truncate-lines t)
+  ;; javascript configurations
   (setq-default js2-basic-offset 2)
   (setq-default js-indent-level 2)
+  ;; Delete trailing whitespace on save
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
   )
 
