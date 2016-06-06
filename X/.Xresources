@@ -1,0 +1,10 @@
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+XTerm*faceName: Sauce Code Powerline
+XTerm*faceSice: 10
+XTerm*background: rgb: 1f/23/26
+XTerm*foreground: rgb: 4d/5a/5e
