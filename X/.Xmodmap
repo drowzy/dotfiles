@@ -1,0 +1,14 @@
+! Modify keybindings. 'xmodmap ~/.xmodmap' should typically be executed during system boot.
+! Keycodes found with xev. Keysyms are listed in /usr/include/X11/keysymdef.h. Exclude the preceding 'XK_'.
+
+! Remove Caps Lock key from the Lock-list.
+remove Lock = Caps_Lock
+
+! Translate the Caps Lock key into matching the Escape keycode.
+keysym Caps_Lock = Escape
+
+! Translate the Pause key to the Caps Lock keycode.
+keysym Pause = Caps_Lock
+
+! Translate the Escape key to the Help keycode.
+!keysym Escape = Help
