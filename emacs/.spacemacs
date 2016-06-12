@@ -30,9 +30,9 @@ values."
      ;; better-defaults
      emacs-lisp
      gnus
+     deft
      (colors :variables
-             colors-enable-rainbow-identifiers nil
-             colors-enable-nyan-cat-progress-bar t)
+             colors-enable-rainbow-identifiers nil)
      git
      markdown
      (org :variables
@@ -62,6 +62,7 @@ values."
    dotspacemacs-additional-packages
    '(
      editorconfig
+     base16-theme
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -129,10 +130,10 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Sauce Code Powerline"
-                               :size 10
+                               :size 11
                                :weight normal
                                :width normal
-                               :powerline-scale 1.0)
+                               :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -282,6 +283,7 @@ you should place you code here."
   ;; utf-8.
   ;; note that changing this setting requires a full restart
   (setq powerline-default-separator 'arrow-fade)
+  (spacemacs/toggle-vi-tilde-fringe-off)
 
   ;; Org-babel
   (org-babel-do-load-languages
@@ -290,7 +292,6 @@ you should place you code here."
      (python . t)
      (sh . t)
      ))
-
   ;; gnus
   ;; Get email, and store in nnml
   (setq gnus-secondary-select-methods
