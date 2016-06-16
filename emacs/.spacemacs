@@ -283,6 +283,7 @@ you should place you code here."
   ;; utf-8.
   ;; note that changing this setting requires a full restart
   (setq powerline-default-separator 'arrow-fade)
+  (spaceline-compile)
   (spacemacs/toggle-vi-tilde-fringe-off)
 
   ;; Org-babel
