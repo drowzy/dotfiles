@@ -45,6 +45,7 @@ values."
      erc
      restclient
      themes-megapack
+     syntax-checking
      (ranger :variables
               ranger-show-preview t)
      (shell :variables
@@ -52,7 +53,6 @@ values."
             shell-default-shell 'ansi-term
             shell-default-height 30
             shell-default-position 'bottom)
-     syntax-checking
      version-control
      )
    ;; List of additional packages that will be installed without being
@@ -86,7 +86,7 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-https nil
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    dotspacemacs-elpa-timeout 5
    ;; If non nil then spacemacs will check for updates at startup
@@ -275,7 +275,19 @@ you should place you code here."
   ;; Autocompletion
   (global-company-mode)
   (yas-global-mode)
+  ;; Flycheck
+  ;; Adds eslint to js2-mode
+  (defun my/use-eslint-from-node-modules ()
+    (let* ((root (locate-dominating-file
+                  (or (buffer-file-name) default-directory)
+                  "node_modules"))
+           (eslint (and root
+                        (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                          root))))
+      (when (file-executable-p eslint)
+        (setq-local flycheck-javascript-eslint-executable eslint))))
 
+  (add-hook 'js2-mode-hook #'my/use-eslint-from-node-modules)
   ;; spaceline related
   ;; spaceline separators
   ;; Valid Values: alternate, arrow, arrow-fade, bar, box, brace,
