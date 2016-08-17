@@ -298,9 +298,17 @@ you should place you code here."
   ;; butt, chamfer, contour, curve, rounded, roundstub, wave, zigzag,
   ;; utf-8.
   ;; note that changing this setting requires a full restart
-  (setq powerline-default-separator 'arrow-fade)
+  (setq powerline-default-separator nil)
   (spaceline-compile)
   (spacemacs/toggle-vi-tilde-fringe-off)
+  ;; alchemist hack to prevent documentation from freezing the editor
+  ;; if company-quickhelp takes to long. https://github.com/tonini/alchemist.el/issues/210
+  (eval-after-load "alchemist"
+    '(defun alchemist-company--wait-for-doc-buffer ()
+        (setf num 50)
+        (while (and (not alchemist-company-doc-lookup-done)
+                    (> (decf num) 1))
+          (sit-for 0.01))))
 
   ;; Org-babel
   (org-babel-do-load-languages
