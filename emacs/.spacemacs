@@ -38,7 +38,11 @@ values."
      (org :variables
           org-enable-github-support t)
      javascript
+     sql
      elixir
+     vagrant
+     csharp
+     dash
      erlang
      ruby
      html
