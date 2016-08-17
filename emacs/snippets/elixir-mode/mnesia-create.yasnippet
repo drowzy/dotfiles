@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+#name : mnesia-create
+#key : mnesia-create
+#contributor : simon
+# --
+:mnesia.stop
+:mnesia.create_schema([node()])
+
+:ok = :mnesia.start
+{:atomic, :ok} = :mnesia.create_table($1, [attributes: [:id, :$2], ram_copies: [node()])
