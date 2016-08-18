@@ -1,5 +1,5 @@
 #!/bin/bash
-PKGS="i3 i3blocks git vim zsh"
+PKGS="i3 i3blocks git vim zsh curl"
 DOTFILES_REPO="https://github.com/drowzy/dotfiles.git"
 
 bold=$(tput bold)
