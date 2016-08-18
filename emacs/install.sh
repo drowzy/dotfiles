@@ -19,7 +19,9 @@ if [ "$INSTALLED_EMACS_VERSION" != "24.5.1" ]; then
     tar xf $DIR/$(basename "$URL") && cd `ls -m1`
 
     echo -e "\033[0;34m${bold}[emacs]${normal} \033[0;34mCompiling Emacs 24.5.1\033[m"
-    ./configure && make && make install
+    ./configure && make
+
+    sudo make install
 fi
 
 echo -e "\033[0;34m${bold}[emacs]${normal} \033[0;34mInstalling Spacemacs ...\033[m"
