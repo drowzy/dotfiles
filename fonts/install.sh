@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-echo "Installing fonts ..."
+bold=$(tput bold)
+normal=$(tput sgr0)
+echo -e "\033[0;34m${bold}[fonts]${normal} \033[0;34mInstalling Powerline fonts & Font-Awesome ...\033[m"
 
 FONT_AWS_GIT="https://github.com/FortAwesome/Font-Awesome.git"
 FONT_PWR_GIT="https://github.com/powerline/fonts.git"
@@ -17,12 +19,12 @@ git clone "$FONT_PWR_GIT" "$FONT_PWR_DIR" && ./$FONT_PWR_DIR/install.sh
 git clone "$FONT_AWS_GIT" "$FONT_AWS_DIR" && cp -r ./$FONT_AWS_DIR/fonts/* $FONT_DIR/
 
 # Reset fonts
-echo "Resetting font cache.."
+echo -e "\033[0;34m${bold}[fonts]${normal} \033[0;34mResetting font cache...\033[m"
 fc-cache -f $FONT_DIR
 
 # Cleanup temp folder
 function cleanup {
-    echo "Font installation complete!"
+    echo -e "\033[0;34m${bold}[fonts]${normal} \033[0;34mInstallation complete\033[m"
     rm -rf "$DIR"
 }
 
