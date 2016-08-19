@@ -15,13 +15,11 @@ if [ "$INSTALLED_EMACS_VERSION" != "24.5.1" ]; then
     sudo apt-get --dry-run build-dep emacs24
 
     echo -e "\033[0;34m${bold}[emacs]${normal} \033[0;34mDownloading Emacs 24.5.1 ...\033[m"
-    wget -P $DIR $URL
-    tar xf $DIR/$(basename "$URL") && cd `ls -m1`
-
     echo -e "\033[0;34m${bold}[emacs]${normal} \033[0;34mCompiling Emacs 24.5.1\033[m"
-    ./configure && make
 
-    sudo make install
+    wget -P $DIR $URL
+    tar xzf $DIR/$(basename "$URL") -C $DIR
+    cd $DIR/emacs-$EMACS_V && ./configure && make -n && sudo make -n install
 fi
 
 echo -e "\033[0;34m${bold}[emacs]${normal} \033[0;34mInstalling Spacemacs ...\033[m"
