@@ -12,7 +12,7 @@ DIR=`mktemp -d`
 
 if [ "$INSTALLED_EMACS_VERSION" != "24.5.1" ]; then
     echo -e "\033[0;34m${bold}[emacs]${normal} \033[0;34mSystem installed emacs is not correct version ...\033[m"
-    sudo apt-get --dry-run build-dep emacs24
+    sudo apt-get build-dep emacs24
 
     echo -e "\033[0;34m${bold}[emacs]${normal} \033[0;34mDownloading Emacs 24.5.1 ...\033[m"
     echo -e "\033[0;34m${bold}[emacs]${normal} \033[0;34mCompiling Emacs 24.5.1\033[m"
