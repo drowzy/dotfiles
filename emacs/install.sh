@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 bold=$(tput bold)
 normal=$(tput sgr0)
-
-URL="http://ftp.gnu.org/gnu/emacs/emacs-24.5.tar.gz"
+EMACS_V="24.5"
+URL="http://ftp.gnu.org/gnu/emacs/emacs-$EMACS_V.tar.gz"
 INSTALLED_EMACS_VERSION=`emacs --version | head -n1 | grep -oP "([0-9]+\.?)+"`
 
 echo -e "\033[0;34m${bold}[emacs]${normal} \033[0;34mInstalling Emacs ...\033[m"
