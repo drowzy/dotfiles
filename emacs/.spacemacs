@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -42,7 +43,7 @@ values."
      elixir
      vagrant
      csharp
-     dash
+     ;; dash
      erlang
      ruby
      html
@@ -131,11 +132,11 @@ values."
                          monokai
                          zenburn)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
-   dotspacemacs-colorize-cursor-according-to-state nil
+   dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Sauce Code Powerline"
-                               :size 11
+                               :size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -270,20 +271,21 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
 `dotspacemacs/user-config' first."
   ;; Cursor color configuration depending on mode
-  (setq spacemacs-evil-cursors '(("normal"  "#00B3EF" box)
-                                 ("insert" "#7bc275" (bar . 2))
-                                 ("emacs" "#00B3EF" box)
-                                 ("hybrid" "#00B3EF" (bar . 2))
-                                 ("replace" "#00B3EF" (hbar . 2))
-                                 ("evilified" "#00B3EF" box)
-                                 ("visual" "#dc70dc" (hbar . 2))
-                                 ("motion" "#00B3EF" box)
-                                 ("lisp" "#9c91e4" box)
-                                 ("iedit" "#00B3EF" box)
-                                 ("iedit-insert" "#7bc275" (bar . 2))))
+  ;; (setq spacemacs-evil-cursors '(("normal"  "#00B3EF" box)
+  ;;                                ("insert" "#7bc275" (bar . 2))
+  ;;                                ("emacs" "#00B3EF" box)
+  ;;                                ("hybrid" "#00B3EF" (bar . 2))
+  ;;                                ("replace" "#00B3EF" (hbar . 2))
+  ;;                                ("evilified" "#00B3EF" box)
+  ;;                                ("visual" "#dc70dc" (hbar . 2))
+  ;;                                ("motion" "#00B3EF" box)
+  ;;                                ("lisp" "#9c91e4" box)
+  ;;                                ("iedit" "#00B3EF" box)
+  ;;                                ("iedit-insert" "#7bc275" (bar . 2))))
 
-  (add-to-list 'load-path "~/.emacs.d/private/themes/")
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/private/themes")
+  ;; (add-to-list 'load-path "~/.emacs.d/private/themes/all-the-icons.el")
+  (add-to-list 'load-path "~/.emacs.d/private/themes/emacs-doom-theme")
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/private/themes/emacs-doom-theme")
   )
 
 (defun dotspacemacs/user-config ()
@@ -296,6 +298,9 @@ you should place you code here."
   ;; Autocompletion
   (global-company-mode)
   (yas-global-mode)
+  ;;
+  ;; (require 'doom-theme)
+  ;; (doom-init-neotree)
   ;; Flycheck
   ;; Adds eslint to js2-mode
   (defun my/use-eslint-from-node-modules ()
