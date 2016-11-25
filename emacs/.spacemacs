@@ -18,6 +18,8 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     ansible
+     windows-scripts
      yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -43,6 +45,7 @@ values."
      elixir
      vagrant
      csharp
+     ;; csharp2
      ;; dash
      erlang
      ruby
@@ -284,8 +287,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;;                                ("iedit-insert" "#7bc275" (bar . 2))))
 
   ;; (add-to-list 'load-path "~/.emacs.d/private/themes/all-the-icons.el")
-  (add-to-list 'load-path "~/.emacs.d/private/themes/emacs-doom-theme")
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/private/themes/emacs-doom-theme")
+  ;; (add-to-load-path (expand-file-name "~/config/emacs/omnisharp.el"))
+  ;; (load "omnisharp-autoloads.el")
+  ;; (add-to-list 'load-path "~/.emacs.d/private/themes/emacs-doom-theme")
+  ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/private/themes/emacs-doom-theme")
   )
 
 (defun dotspacemacs/user-config ()
@@ -379,6 +384,9 @@ you should place you code here."
   (setq-default js-indent-level 2)
   ;; Delete trailing whitespace on save
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  ;; Omnisharp
+  (setq-default omnisharp-server-executable-path "~/dev/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
+  ;; (setq-default omnisharp-server-executable-path "~/bin/OmniSharp.exe")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
