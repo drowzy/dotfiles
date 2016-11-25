@@ -185,7 +185,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # keybindings
 bindsym Control+Shift+e exec setxkbmap -layout us
 bindsym Control+Shift+s exec setxkbmap -layout se -variant nodeadkeys
-exec --no-startup-id feh --bg-fill ~/Pictures/sky.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/bg2.png
+exec --no-startup-id nm-applet
 exec_always xmodmap ~/.Xmodmap
 exec_always xrdb ~/.Xresources
 # resize window (you can also use the mouse for that)
@@ -219,7 +220,8 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         position top
-        tray_output LVDS
+        # tray_output LVDS
+        tray_output primary
         font pango:Sauce Code Powerline 9, FontAwesome 10
         colors {
                background $grey-dark
