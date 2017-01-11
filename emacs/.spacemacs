@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     python
      ansible
      windows-scripts
      yaml
@@ -70,6 +71,8 @@ values."
    dotspacemacs-additional-packages
    '(
      editorconfig
+     purple-haze-theme
+     zerodark-theme
      base16-theme
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -126,8 +129,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         doom-one
+   dotspacemacs-themes '(
+                         zerodark
+                         spacemacs-dark
+                         purple-haze
                          spacemacs-light
                          solarized-light
                          solarized-dark
