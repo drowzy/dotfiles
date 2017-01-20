@@ -310,8 +310,14 @@ you should place you code here."
   (global-company-mode)
   (yas-global-mode)
   ;;
-  ;; (require 'doom-theme)
-  ;; (doom-init-neotree)
+  ;; artist mode
+  (defun artist-mode-toggle-emacs-state ()
+    (if artist-mode
+        (evil-emacs-state)
+      (evil-exit-emacs-state)))
+
+  (unless (eq dotspacemacs-editing-style 'emacs)
+    (add-hook 'artist-mode-hook #'artist-mode-toggle-emacs-state))
   ;; Flycheck
   ;; Adds eslint to js2-mode
   (defun my/use-eslint-from-node-modules ()
