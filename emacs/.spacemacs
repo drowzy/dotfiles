@@ -280,7 +280,7 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 
 `dotspacemacs/user-config' first."
-
+)
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -295,9 +295,9 @@ you should place you code here."
   ;; artist mode
   (defun artist-mode-toggle-emacs-state ()
     (if artist-mode
-        (evil-emacs-state)
+        (unless (evil-emacs-state-p)
+          (evil-emacs-state))
       (evil-exit-emacs-state)))
-
   (unless (eq dotspacemacs-editing-style 'emacs)
     (add-hook 'artist-mode-hook #'artist-mode-toggle-emacs-state))
   ;; Flycheck
