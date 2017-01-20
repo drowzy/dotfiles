@@ -35,10 +35,12 @@ values."
      emacs-lisp
      gnus
      deft
+     docker
      (colors :variables
              colors-enable-rainbow-identifiers nil)
      git
-     markdown
+     (markdown :variables
+               markdown-live-preview-engine 'vmd)
      (org :variables
           org-enable-github-support t)
      javascript
