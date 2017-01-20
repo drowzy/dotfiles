@@ -71,6 +71,7 @@ values."
    dotspacemacs-additional-packages
    '(
      editorconfig
+     all-the-icons
      purple-haze-theme
      zerodark-theme
      base16-theme
@@ -381,7 +382,7 @@ you should place you code here."
   ;; Line numbers
   (global-linum-mode)
   ;; Neo tree theme
-  (setq neo-theme 'nerd)
+  (setq neo-theme 'icons)
   ;; Truncate lines
   (setq-default truncate-lines t)
   ;; javascript configurations
