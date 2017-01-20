@@ -132,9 +132,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(
+   dotspacemacs-themes '(spacemacs-dark
                          zerodark
-                         spacemacs-dark
                          purple-haze
                          spacemacs-light
                          solarized-light
@@ -281,25 +280,6 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 
 `dotspacemacs/user-config' first."
-  ;; Cursor color configuration depending on mode
-  ;; (setq spacemacs-evil-cursors '(("normal"  "#00B3EF" box)
-  ;;                                ("insert" "#7bc275" (bar . 2))
-  ;;                                ("emacs" "#00B3EF" box)
-  ;;                                ("hybrid" "#00B3EF" (bar . 2))
-  ;;                                ("replace" "#00B3EF" (hbar . 2))
-  ;;                                ("evilified" "#00B3EF" box)
-  ;;                                ("visual" "#dc70dc" (hbar . 2))
-  ;;                                ("motion" "#00B3EF" box)
-  ;;                                ("lisp" "#9c91e4" box)
-  ;;                                ("iedit" "#00B3EF" box)
-  ;;                                ("iedit-insert" "#7bc275" (bar . 2))))
-
-  ;; (add-to-list 'load-path "~/.emacs.d/private/themes/all-the-icons.el")
-  ;; (add-to-load-path (expand-file-name "~/config/emacs/omnisharp.el"))
-  ;; (load "omnisharp-autoloads.el")
-  ;; (add-to-list 'load-path "~/.emacs.d/private/themes/emacs-doom-theme")
-  ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/private/themes/emacs-doom-theme")
-  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
