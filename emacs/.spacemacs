@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     ocaml
      python
      ansible
      windows-scripts
@@ -48,6 +49,7 @@ values."
      elixir
      vagrant
      csharp
+     ;;reasonml
      ;; csharp2
      ;; dash
      erlang

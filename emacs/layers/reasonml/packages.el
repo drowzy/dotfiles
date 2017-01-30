@@ -29,63 +29,45 @@
 
 ;;; Code:
 
-(defconst reasonml-packages
-  '(
-    merlin
-    (reason-mode :location (recipe
-                            :fetcher github
-                            :repo facebook/reason
-                            :files ("editorSupport/emacs/reason-mode.el")))
+  (defconst reasonml-packages
+    '(
+      merlin
+      ;; (reason-mode :location local)
+      ;; (refmt :location local)
+      (refmt :location (recipe
+                        :fetcher github
+                        :repo facebook/reason
+                        :files ("editorSupport/emacs/refmt.el")))
 
-    (refmt :location (recipe
-                      :fetcher github
-                      :repo facebook/reason
-                      :files ("editorSupport/emacs/refmt.el")))
-    )
-
+      (reason-mode :location (recipe
+                              :fetcher github
+                              :repo facebook/reason
+                              :files ("editorSupport/emacs/reason-mode.el")))
+    ))
+  ;; TODO refmt will fail to load and in turn cause this layer to fail to load
+  ;; when starting spacemacs.
+  (defun reasonml/init-refmt ()
+    (use-package refmt))
+  (defun reasonml-post-init-merlin ())
   (defun reasonml/init-reason-mode ()
-    (use-package reason-mode)
+    (use-package reason-mode
     :init
     (progn
+      (add-to-list 'auto-mode-alist '("\\.re\\'" . reason-mode))
+      (add-to-list 'auto-mode-alist '("\\.rei\\'" . reason-mode))
       (setq opam (substring (shell-command-to-string "opam config var prefix 2> /dev/null") 0 -1))
       (add-to-list 'load-path (concat opam "/share/emacs/site-lisp"))
       (setq refmt-command (concat opam "/bin/refmt"))
 
-      (require 'reason-mode)
-      (require 'merlin)
+      ;; (require 'reason-mode)
+      ;; (require 'merlin)
       (setq merlin-ac-setup t)
       (add-hook 'reason-mode-hook (lambda ()
                                     (add-hook 'before-save-hook 'refmt-before-save)
                                     (merlin-mode)))
       )
-    )
-  "The list of Lisp packages required by the reasonml layer.
+    ))
 
-Each entry is either:
-
-1. A symbol, which is interpreted as a package to be installed, or
-
-2. A list of the form (PACKAGE KEYS...), where PACKAGE is the
-    name of the package to be installed or loaded, and KEYS are
-    any number of keyword-value-pairs.
-
-    The following keys are accepted:
-
-    - :excluded (t or nil): Prevent the package from being loaded
-      if value is non-nil
-
-    - :location: Specify a custom installation location.
-      The following values are legal:
-
-      - The symbol `elpa' (default) means PACKAGE will be
-        installed using the Emacs package manager.
-
-      - The symbol `local' directs Spacemacs to load the file at
-        `./local/PACKAGE/PACKAGE.el'
-
-      - A list beginning with the symbol `recipe' is a melpa
-        recipe.  See: https://github.com/milkypostman/melpa#recipe-format"
-  )
 
 
 ;;; packages.el ends here
