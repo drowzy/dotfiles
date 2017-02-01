@@ -49,6 +49,7 @@ values."
      elixir
      vagrant
      csharp
+     react
      ;;reasonml
      ;; csharp2
      ;; dash
@@ -375,9 +376,18 @@ you should place you code here."
   (setq neo-theme 'icons)
   ;; Truncate lines
   (setq-default truncate-lines t)
-  ;; javascript configurations
-  (setq-default js2-basic-offset 2)
-  (setq-default js-indent-level 2)
+  ;; javascript/web configurations
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   js2-indent-level 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
+
   ;; Delete trailing whitespace on save
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
   ;; Omnisharp
