@@ -18,6 +18,10 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     fsharp
+     csv
+     clojure
+     nginx
      ocaml
      python
      ansible
@@ -38,7 +42,8 @@ values."
      deft
      docker
      (colors :variables
-             colors-enable-rainbow-identifiers nil)
+             colors-colorize-identifiers 'variables
+             colors-enable-rainbow-identifiers t)
      git
      (markdown :variables
                markdown-live-preview-engine 'vmd)
@@ -341,6 +346,14 @@ you should place you code here."
      (python . t)
      (sh . t)
      ))
+
+  (eval-after-load 'grep
+    '(progn
+      (setq helm-ag-use-grep-ignore-list 't)
+      (add-to-list 'grep-find-ignored-directories ".git")
+      (add-to-list 'grep-find-ignored-directories "target")
+      (add-to-list 'grep-find-ignored-directories "node_modules")
+      (add-to-list 'grep-find-ignored-files "*.jar")))
   ;; gnus
   ;; Get email, and store in nnml
   (setq gnus-secondary-select-methods
@@ -393,6 +406,8 @@ you should place you code here."
   ;; Omnisharp
   (setq-default omnisharp-server-executable-path "~/dev/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
   ;; (setq-default omnisharp-server-executable-path "~/bin/OmniSharp.exe")
+  ;; clojure
+  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
