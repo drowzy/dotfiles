@@ -142,6 +142,7 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
                          zerodark
+                         doom-one
                          purple-haze
                          spacemacs-light
                          solarized-light
