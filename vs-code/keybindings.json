@@ -1,0 +1,114 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    // Autocomplete widget
+    {
+        "key": "ctrl+j",
+        "command": "selectNextSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    // Repl history
+    {
+        "key": "ctrl+j",
+        "command": "repl.action.historyNext",
+        "when": "editorTextFocus && inDebugRepl && onLastDebugReplLine"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "repl.action.historyPrevious",
+        "when": "editorTextFocus && inDebugRepl && onFirsteDebugReplLine"
+    },
+    {
+        "key": "ctrl shift f",
+        "command": "search.action.focusActiveEditor",
+        "when": "searchInputBoxFocus && searchViewletVisible"
+    },
+    // Tab buffer navigation
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.nextEditor",
+        "when": "!suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.previousEditor",
+        "when": "!suggestWidgetVisible"
+    },
+    // Search
+    {
+        "key": "ctrl+j",
+        "command": "search.focus.nextInputBox",
+        "when": "inputBoxFocus && searchViewletVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "search.focus.PreviousInputBox",
+        "when": "inputBoxFocus && searchViewletVisible"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "search.focus.nextInputBox",
+        "when": "inputBoxFocus && searchViewletVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "search.focus.previousInputBox",
+        "when": "inputBoxFocus && searchViewletVisible && !searchInputBoxFocus"
+    },
+    {
+        "key": "shift+k shift+k",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    // Explorer navigation
+    {
+        "key": "j",
+        "command": "list.focusDown",
+        "when": "listFocus"
+    },
+    {
+        "key": "k",
+        "command": "list.focusUp",
+        "when": "listFocus"
+    },
+    {
+        "key": "h",
+        "command": "list.collapse",
+        "when": "listFocus"
+    },
+    {
+        "key": "l",
+        "command": "list.select",
+        "when": "listFocus"
+    },
+    // Navigate to editor
+    {
+        "key": "space 1",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "listFocus"
+    },
+    {
+        "key": "space 2",
+        "command": "workbench.action.focusSecondEditorGroup",
+        "when": "listFocus"
+    },
+    {
+        "key": "space 3",
+        "command": "workbench.action.focusThirdditorGroup",
+        "when": "listFocus"
+    }
+]

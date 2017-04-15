@@ -1,0 +1,172 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Atom One Dark",
+    "editor.fontSize": 11,
+    "editor.fontFamily": "Sauce Code Powerline",
+    "editor.lineNumbers": "relative",
+    "editor.formatOnSave": true,
+    "terminal.integrated.fontSize": 11,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [{
+        "before": ["f", "d"],
+        "after": ["<Esc>"]
+    }],
+    "vim.otherModesKeyBindingsNonRecursive": [{
+            "before": ["<leader>", ";"],
+            "after": [],
+            "commands": [{
+                "command": "editor.action.commentLine"
+            }]
+        },
+        // errors
+        // next error
+        {
+            "before": ["<leader>", "e", "n"],
+            "after": [],
+            "commands": [{
+                "command": "editor.action.marker.next"
+            }]
+        },
+        // files
+        // save file
+        {
+            "before": ["<leader>", "f", "s"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.files.save"
+            }]
+        },
+        // Git
+        // open git extension
+        {
+            "before": ["<leader>", "g", "s"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.view.git"
+            }]
+        },
+        // project
+        // toggle sidebar
+        {
+            "before": ["<leader>", "p", "t"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.toggleSidebarVisibility"
+            }]
+        },
+        // Terminal
+        // open terminal
+        {
+            "before": ["<leader>", "'"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.terminal.toggleTerminal"
+            }]
+        },
+        // Commands
+        // open command palette
+        {
+            "before": ["<leader>", ":"],
+            "after": [],
+            "commmands": [{
+                "command": "workbench.action.showCommands"
+            }]
+        },
+        // toggles
+        // toggle tooltip
+        {
+            "before": ["<leader>", "t", "t"],
+            "after": [],
+            "commmands": [{
+                "command": "editor.action.showHover"
+            }]
+        },
+        // buffers
+        // close buffer
+        {
+            "before": ["<leader>", "b", "d"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.closeActiveEditor"
+            }]
+        },
+        // select buffer to open
+        {
+            "before": ["<leader>", "b", "b"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.quickOpen"
+            }]
+        },
+        // window
+        // split window
+        {
+            "before": ["<leader>", "w", "/"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.splitEditor"
+            }]
+        },
+        // close window
+        {
+            "before": ["<leader>", "w", "d"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.closeWindow"
+            }]
+        },
+        // navigate to sidebar
+        {
+            "before": ["<leader>", "0"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.view.explorer"
+            }]
+        },
+        // go to first window
+        {
+            "before": ["<leader>", "1"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.focusFirstEditorGroup"
+            }]
+        },
+        // go to second window
+        {
+            "before": ["<leader>", "2"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.focusSecondEditorGroup"
+            }]
+        },
+        // go to third window
+        {
+            "before": ["<leader>", "3"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.focusThirdEditorGroup"
+            }]
+        },
+        // search
+        // project search
+        {
+            "before": ["<leader>", "/"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.view.search"
+            }]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    }
+
+    // JSON
+
+}
