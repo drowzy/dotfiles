@@ -72,8 +72,9 @@
         {
             "before": ["<leader>", ":"],
             "after": [],
-            "commmands": [{
-                "command": "workbench.action.showCommands"
+            "commands": [{
+                "command": "workbench.action.showCommands",
+                "args": []
             }]
         },
         // toggles
@@ -81,7 +82,7 @@
         {
             "before": ["<leader>", "t", "t"],
             "after": [],
-            "commmands": [{
+            "commands": [{
                 "command": "editor.action.showHover"
             }]
         },
