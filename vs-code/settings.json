@@ -166,6 +166,11 @@
     "vim.handleKeys": {
         "<C-a>": false,
         "<C-f>": false
+    },
+    // lang
+    "files.associations": {
+        "*.ml": "ocaml",
+        "*.mli": "ocaml"
     }
 
     // JSON
