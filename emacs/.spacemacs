@@ -142,24 +142,16 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
-                         doom-vibrant
-                         zerodark
-                         purple-haze
-                         spacemacs-light
-                         solarized-light
-                         solarized-dark
-                         leuven
-                         monokai
-                         zenburn)
+                         doom-vibrant)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Hack"
-                               :size 13
+                               :size 12
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -295,21 +287,13 @@ before packages are loaded. If you are unsure, you should try in setting them in
 (defun dotspacemacs/user-config/display ()
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t  ; if nil, italics is universally disabled
-        doom-one-brighter-modeline nil
-        )
-  (add-hook 'find-file-hook #'doom-buffer-mode-maybe)
-  (add-hook 'after-revert-hook #'doom-buffer-mode-maybe)
-  (add-hook 'ediff-prepare-buffer-hook #'doom-buffer-mode)
-  (add-hook 'find-file-hook #'doom-buffer-mode-maybe)
-  (add-hook 'after-revert-hook #'doom-buffer-mode-maybe)
-  (add-hook 'ediff-prepare-buffer-hook #'doom-buffer-mode)
+        doom-one-brighter-modeline t)
 
   (setq neo-theme 'icons)
 
   (spacemacs/cycle-spacemacs-theme)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-default)
   (setq powerline-default-separator 'arrow)
-  ;; (spaceline-compile)
 
   (use-package spaceline-all-the-icons
     :after spaceline
@@ -317,8 +301,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
               (spaceline-all-the-icons--setup-neotree)
               (spaceline-all-the-icons-theme)
               (setq spaceline-all-the-icons-icon-set-modified 'chain
+                    spaceline-all-the-icons-separators-type 'none
                     spaceline-all-the-icons-icon-set-window-numbering 'solid
-                    spaceline-all-the-icons-separators-type arrow
                     spaceline-all-the-icons-primary-separator ""
                     )
               (spaceline-toggle-all-the-icons-buffer-size-off)
