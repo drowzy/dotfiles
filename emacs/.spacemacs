@@ -437,7 +437,7 @@ you should place you code here."
     (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
     (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
-  (add-to-list 'all-the-icons-icon-alist '("\\.ml" . (all-the-icons-fileicon "ocaml")))
+  (add-to-list 'all-the-icons-icon-alist '("\\.ml" . (all-the-icons-fileicon "ocaml" :face 'all-the-icons-orange)))
 
   ;; Delete trailing whitespace on save
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
