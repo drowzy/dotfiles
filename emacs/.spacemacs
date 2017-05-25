@@ -326,8 +326,9 @@ you should place you code here."
   ;; Autocompletion
   (global-company-mode)
   (yas-global-mode)
+  (editorconfig-mode 1)
   ;;
-
+  (setq neo-window-position 'right)
   (dotspacemacs/user-config/display)
   ;; artist mode
   (defun artist-mode-toggle-emacs-state ()
