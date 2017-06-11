@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: react-reducer
+# key: rr
+# --
+import { $1 } from './constants';
+
+const initialState = {};
+const ACTION_HANDLERS = {
+  [$1]: (state, action) => {
+    return {...state};
+  },
+};
+
+export default function $0 (state = initialState, action) {
+  const handler = ACTION_HANDLERS[action.type];
+
+  return handler ? handler(state, action) : state;
+}

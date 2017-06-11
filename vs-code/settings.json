@@ -171,8 +171,20 @@
     "files.associations": {
         "*.ml": "ocaml",
         "*.mli": "ocaml"
-    }
-
+    },
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[html]": {
+        "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.tabSize": 2
+    },
+    "[reason]": {
+        "editor.tabSize": 2
+    },
+    "vsicons.dontShowNewVersionMessage": true,
+    "vim.disableAnnoyingNeovimMessage": true
     // JSON
-
 }
