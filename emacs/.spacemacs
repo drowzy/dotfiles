@@ -297,6 +297,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-default)
   (setq powerline-default-separator 'arrow)
 
+  (setq
+   browse-url-browser-function 'browse-url-generic
+   browse-url-generic-program "google-chrome")
+
   (use-package spaceline-all-the-icons
     :after spaceline
     :config (progn
