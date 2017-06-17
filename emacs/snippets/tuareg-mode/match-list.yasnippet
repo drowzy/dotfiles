@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: match-list
+# key: matchl
+# --
+match ${1:list} with
+| [] -> ${2:()}
+| x::xs -> ${3:()}$0
