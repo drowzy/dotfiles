@@ -185,7 +185,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # keybindings
 bindsym Control+Shift+e exec setxkbmap -layout us
 bindsym Control+Shift+s exec setxkbmap -layout se -variant nodeadkeys
-exec --no-startup-id feh --bg-fill ~/Pictures/bg2.png
+exec --no-startup-id feh --bg-fill ~/Pictures/bg_sun.png
 exec --no-startup-id nm-applet
 exec_always xmodmap ~/.Xmodmap
 exec_always xrdb ~/.Xresources
