@@ -9,18 +9,18 @@ FONT_PWR_DIR="pwr"
 FONT_AWS_DIR="aws"
 FONT_DIR="$HOME/.local/share/fonts"
 # Create fonts dir if it does not exist
-mkdir -p $FONT_DIR
+mkdir -p "$FONT_DIR"
 # Create temporary folder
 DIR=`mktemp -d`
 
-cd $DIR
+cd "$DIR" || exit
 
 git clone "$FONT_PWR_GIT" "$FONT_PWR_DIR" && ./$FONT_PWR_DIR/install.sh
-git clone "$FONT_AWS_GIT" "$FONT_AWS_DIR" && cp -r ./$FONT_AWS_DIR/fonts/* $FONT_DIR/
+git clone "$FONT_AWS_GIT" "$FONT_AWS_DIR" && cp -r ./$FONT_AWS_DIR/fonts/* "$FONT_DIR/"
 
 # Reset fonts
 echo -e "\033[0;34m${bold}[fonts]${normal} \033[0;34mResetting font cache...\033[m"
-fc-cache -f $FONT_DIR
+fc-cache -f "$FONT_DIR"
 
 # Cleanup temp folder
 function cleanup {
