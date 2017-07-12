@@ -341,6 +341,7 @@ you should place you code here."
   (global-company-mode)
   (yas-global-mode)
   (editorconfig-mode 1)
+  (setq create-lockfiles nil)
   ;;
   ;; (setq neo-window-position 'right)
   (dotspacemacs/user-config/display)
