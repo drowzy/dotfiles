@@ -414,6 +414,8 @@ you should place you code here."
    '(
      (python . t)
      (sh . t)
+     (js . t)
+     (http . t)
      ))
 
   (eval-after-load 'grep
