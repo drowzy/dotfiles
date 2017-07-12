@@ -424,6 +424,7 @@ you should place you code here."
       (add-to-list 'grep-find-ignored-directories ".git")
       (add-to-list 'grep-find-ignored-directories "target")
       (add-to-list 'grep-find-ignored-directories "node_modules")
+      (add-to-list 'grep-find-ignored-directories "build")
       (add-to-list 'grep-find-ignored-files "*.jar")))
   ;; gnus
   ;; Get email, and store in nnml
