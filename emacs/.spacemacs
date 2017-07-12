@@ -150,6 +150,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
+                         doom-one
                          doom-vibrant
                          zerodark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -296,7 +297,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 (defun dotspacemacs/user-config/display ()
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t  ; if nil, italics is universally disabled
-        doom-one-brighter-modeline t)
+        doom-one-brighter-modeline nil)
 
   (setq neo-theme 'icons)
 
