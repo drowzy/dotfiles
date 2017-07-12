@@ -480,13 +480,11 @@ you should place you code here."
     (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
   (add-to-list 'all-the-icons-icon-alist '("\\.ml" . (all-the-icons-fileicon "ocaml" :face all-the-icons-orange)))
+  (add-to-list 'all-the-icons-icon-alist '("\\.fs" . (all-the-icons-fileicon "fbx" :face all-the-icons-blue)))
   (add-to-list 'all-the-icons-icon-alist '("\\.simon" . (all-the-icons-fileicon "self" :face all-the-icons-red)))
 
   ;; Delete trailing whitespace on save
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
-  ;; Omnisharp
-  (setq-default omnisharp-server-executable-path "~/dev/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
-  ;; (setq-default omnisharp-server-executable-path "~/bin/OmniSharp.exe")
   ;; clojure
   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
   )
