@@ -1,0 +1,13 @@
+# -*- mode: snippet require-final-newline: nil -*-
+# name: jest-component-test
+# key: rtc
+# --
+import React from 'react';
+import { shallow } from 'enzyme';
+import ${3:${1:$(file-name-nondirectory yas/text)}} from '${1:Component}';
+
+it('renders without crashing`', () => {
+  const wrapper = shallow(<$3 />);
+
+  expect(wrapper).toBeTruthy();
+});
