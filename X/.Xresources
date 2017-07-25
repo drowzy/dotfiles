@@ -4,8 +4,26 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
-*faceName: Sauce Code Powerline
-*faceSice: 10
+*faceName: Hack
+*faceSice: 12
+! Rofi
+rofi.color-enabled: true
+rofi.font: Hack Bold 12
+rofi.modi: window,run,ssh
+rofi.opacity: 90
+rofi.color-window: #282c34, #282c34, #abb2bf
+rofi.color-normal: #282c34, #abb2bf, #353942, #268bd2, #282c34
+rofi.color-active: #282c34, #abb2bf, #282c34, #c678dd, #282c34
+rofi.color-urgent: #282c34, #abb2bf, #282c34, #268bd2, #ffffff
+
+rofi.kb-remove-to-eol: Control+Shift+k
+rofi.kb-accept-entry: Control+m,Return,KP_Enter
+rofi.kb-row-up: Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab,Control+k
+rofi.kb-row-down: Down,Control+n,Control+j
+
+rofi.terminal:          /usr/bin/zsh
+rofi.run-shell-command: /usr/bin/zsh -c -i '{cmd}'
+rofi.ssh-command:       {terminal} -c -i "{ssh-client} {host}"
 ! URxvt
 
 URxvt.termName:           rxvt-unicode-256color
@@ -22,10 +40,13 @@ URxvt*internalBorder:     0
 URxvt.depth:              32
 
 ! Fonts
-URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=11:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
-URxvt*boldFont: xft:Source\ Code\ Pro\ Medium:pixelsize=12:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
+URxvt.font:           xft:Hack:size=10
 
 URxvt*colorBD:            #ffffff
+URxvt*cursorColor:                    #d1d4e0
+URxvt*scrollColor:                    #d1d4e0
+URxvt*highlightColor:                 #252936
+URxvt*highlightTextColor:             #C0C5CE
 URxvt.xftAntialias:       true
 
 ! urxvt will force a screen refresh on each new line it received
@@ -51,53 +72,25 @@ URxvt.cutchars:           "`()'*[]{|}"
 URxvt.iso14755_52:        false
 URxvt.iso14755:           false
 
-! Base16 Ocean
-! Scheme: Chris Kempson (http://chriskempson.com)
-
-#define base00 #2b303b
-#define base01 #343d46
-#define base02 #4f5b66
-#define base03 #65737e
-#define base04 #a7adba
-#define base05 #c0c5ce
-#define base06 #dfe1e8
-#define base07 #eff1f5
-#define base08 #bf616a
-#define base09 #d08770
-#define base0A #ebcb8b
-#define base0B #a3be8c
-#define base0C #96b5b4
-#define base0D #8fa1b3
-#define base0E #b48ead
-#define base0F #ab7967
-
-*.foreground:   base05
-*.background:   base00
-*.cursorColor:  base05
-
-*.color0:       base00
-*.color1:       base08
-*.color2:       base0B
-*.color3:       base0A
-*.color4:       base0D
-*.color5:       base0E
-*.color6:       base0C
-*.color7:       base05
-
-*.color8:       base03
-*.color9:       base08
-*.color10:      base0B
-*.color11:      base0A
-*.color12:      base0D
-*.color13:      base0E
-*.color14:      base0C
-*.color15:      base07
-
-! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
-! use 'shell' template to set these if necessary
-*.color16:      base09
-*.color17:      base0F
-*.color18:      base01
-*.color19:      base02
-*.color20:      base04
-*.color21:      base06
+*.color0: #1E2127
+*.color8: #5C6370
+*.color1: #CC626A
+*.color9: #E06C75
+*.color2: #98C379
+*.color10: #A7D685
+*.color3:  #da8548
+*.color11: #ECBE7B
+*.color4: #3E86B8
+*.color12: #51afef
+*.color5: #a9a1e1
+*.color13: #C678DD
+*.color6: #4db5bd
+*.color14: #56B6C2
+*.color7: #ABB2BF
+*.color15: #FFFFFF
+*colour17: #000F1F
+*colour18: #210000
+*colour19: #171600
+*.foreground: #ABB2BF
+*.cursorColor: #5C6370
+*.background: #282c34
