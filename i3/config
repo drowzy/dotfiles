@@ -143,11 +143,11 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
-set $ws1  "1:TERM "
-set $ws2  "2:CODE "
-set $ws3  "3:CAT "
-set $ws4  "4:WEB &#xf268;"
-set $ws5  "5:CHAT "
+set $ws1  "1: "
+set $ws2  "2: "
+set $ws3  "3: "
+set $ws4  "4: &#xf268;"
+set $ws5  "5: "
 set $ws6  "6:"
 set $ws7  "7:"
 set $ws8  "8:"
@@ -225,12 +225,12 @@ bar {
         position top
         # tray_output LVDS
         tray_output primary
-        font pango:Hack 9, FontAwesome 10
+        font pango:Hack Bold 11, FontAwesome Bold 11
         colors {
                background $grey-dark
                statusline $grey-light
-               focused_workspace $grey-dark $test-blue $grey-dark
-               inactive_workspace $grey-dark $purple $test-gray
+               focused_workspace $grey-dark $grey-dark $test-blue
+               inactive_workspace $grey-dark $grey-dark $purple
                urgent_workspace $grey-dark $red-highlight $white
         }
 }
