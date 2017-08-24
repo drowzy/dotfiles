@@ -150,15 +150,15 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
-                         zerodark
                          doom-one
+                         zerodark
                          doom-vibrant)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Sauce Code Powerline"
-                               :size 12
+   dotspacemacs-default-font '("Hack"
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
@@ -315,20 +315,13 @@ before packages are loaded. If you are unsure, you should try in setting them in
               (spaceline-all-the-icons--setup-neotree)
               (spaceline-all-the-icons-theme)
               (setq spaceline-all-the-icons-icon-set-modified 'chain
-                    spaceline-all-the-icons-separators-type 'none
+                    spaceline-all-the-icons-separators-type 'arrow
                     spaceline-all-the-icons-icon-set-window-numbering 'solid
                     spaceline-all-the-icons-primary-separator ""
                     )
-              (spaceline-toggle-all-the-icons-buffer-size-off)
-              ;; (spaceline-toggle-all-the-icons-buffer-position-off)
-              ;; (spaceline-toggle-all-the-icons-vc-icon-off)
-              ;; (spaceline-toggle-all-the-icons-vc-status-off)
-              ;; (spaceline-toggle-all-the-icons-git-status-off)
-              ;; (spaceline-toggle-all-the-icons-flycheck-status-off)
-              ;; (spaceline-toggle-all-the-icons-time-off)
-              ;; (spaceline-toggle-all-the-icons-battery-status-off)
               (spaceline-toggle-hud-on)
-              ))
+              )
+    )
   )
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
