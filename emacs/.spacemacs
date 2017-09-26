@@ -66,16 +66,16 @@ values."
      html
      erc
      restclient
-     themes-megapack
      syntax-checking
      (ranger :variables
               ranger-show-preview t)
      (shell :variables
             shell-default-term-shell "/usr/bin/zsh"
-            shell-default-shell 'ansi-term
+            shell-default-shell 'eshell
             shell-default-height 20
             shell-default-position 'bottom)
      version-control
+     reason
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
