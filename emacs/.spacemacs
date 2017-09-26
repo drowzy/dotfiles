@@ -89,11 +89,11 @@ values."
      doom-themes
      zerodark-theme
      spaceline-all-the-icons
-     (reason-mode
-      :location (recipe
-                 :repo "arichiardi/reason-mode"
-                 :fetcher github
-                 :files ("reason-mode.el" "refmt.el", "reason-indent.el")))
+     ;; (reason-mode
+     ;;  :location (recipe
+     ;;             :repo "arichiardi/reason-mode"
+     ;;             :fetcher github
+     ;;             :files ("reason-mode.el" "refmt.el", "reason-indent.el")))
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -305,6 +305,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-default)
   (setq powerline-default-separator 'arrow)
 
+  ;; (doom-themes-neotree-config)
   (setq
    browse-url-browser-function 'browse-url-generic
    browse-url-generic-program "google-chrome")
@@ -323,6 +324,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
               )
     )
   )
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -339,29 +341,29 @@ you should place you code here."
   ;; (setq neo-window-position 'right)
   (dotspacemacs/user-config/display)
   ;; reason
-(defun chomp-end (str)
-  "Chomp tailing whitespace from STR."
-  (replace-regexp-in-string (rx (* (any " \t\n")) eos)
-                            ""
-                            str))
+;; (defun chomp-end (str)
+;;   "Chomp tailing whitespace from STR."
+;;   (replace-regexp-in-string (rx (* (any " \t\n")) eos)
+;;                             ""
+;;                             str))
 
-(let ((support-base-dir (concat (replace-regexp-in-string "refmt" "" (file-truename (chomp-end (shell-command-to-string "which refmt")))) ".."))
-      (merlin-base-dir (concat (replace-regexp-in-string "ocamlmerlin" "" (file-truename (chomp-end (shell-command-to-string "which ocamlmerlin")))) "..")))
-  ;; Add npm merlin.el to the emacs load path and tell emacs where to find ocamlmerlin
-  (add-to-list 'load-path (concat merlin-base-dir "/share/emacs/site-lisp/"))
-  (setq merlin-command (concat merlin-base-dir "/bin/ocamlmerlin"))
+;; (let ((support-base-dir (concat (replace-regexp-in-string "refmt" "" (file-truename (chomp-end (shell-command-to-string "which refmt")))) ".."))
+;;       (merlin-base-dir (concat (replace-regexp-in-string "ocamlmerlin" "" (file-truename (chomp-end (shell-command-to-string "which ocamlmerlin")))) "..")))
+;;   ;; Add npm merlin.el to the emacs load path and tell emacs where to find ocamlmerlin
+;;   (add-to-list 'load-path (concat merlin-base-dir "/share/emacs/site-lisp/"))
+;;   (setq merlin-command (concat merlin-base-dir "/bin/ocamlmerlin"))
 
-  ;; Add npm reason-mode to the emacs load path and tell emacs where to find refmt
-  (add-to-list 'load-path (concat support-base-dir "/share/emacs/site-lisp"))
-  (setq refmt-command (concat support-base-dir "/bin/refmt")))
+;;   ;; Add npm reason-mode to the emacs load path and tell emacs where to find refmt
+;;   (add-to-list 'load-path (concat support-base-dir "/share/emacs/site-lisp"))
+;;   (setq refmt-command (concat support-base-dir "/bin/refmt")))
 
-(require 'reason-mode)
-(require 'merlin)
-(add-hook 'reason-mode-hook (lambda ()
-                              (add-hook 'before-save-hook 'refmt-before-save)
-                              (merlin-mode)))
+;; (require 'reason-mode)
+;; (require 'merlin)
+;; (add-hook 'reason-mode-hook (lambda ()
+;;                               (add-hook 'before-save-hook 'refmt-before-save)
+;;                               (merlin-mode)))
 
-(setq merlin-ac-setup t)
+;; (setq merlin-ac-setup t)
   ;; artist mode
   (defun artist-mode-toggle-emacs-state ()
     (if artist-mode
@@ -392,14 +394,6 @@ you should place you code here."
   ;; (setq powerline-default-separator 'arrow)
   ;; (spaceline-compile)
   (spacemacs/toggle-vi-tilde-fringe-off)
-  ;; alchemist hack to prevent documentation from freezing the editor
-  ;; if company-quickhelp takes to long. https://github.com/tonini/alchemist.el/issues/210
-  (eval-after-load "alchemist"
-    '(defun alchemist-company--wait-for-doc-buffer ()
-        (setf num 50)
-        (while (and (not alchemist-company-doc-lookup-done)
-                    (> (decf num) 1))
-          (sit-for 0.01))))
 
   ;; Org-babel
   (org-babel-do-load-languages
@@ -418,6 +412,8 @@ you should place you code here."
       (add-to-list 'grep-find-ignored-directories "target")
       (add-to-list 'grep-find-ignored-directories "node_modules")
       (add-to-list 'grep-find-ignored-directories "build")
+      (add-to-list 'grep-find-ignored-directories "coverage")
+      (add-to-list 'grep-find-ignored-directories ".storybook")
       (add-to-list 'grep-find-ignored-files "*.jar")))
   ;; gnus
   ;; Get email, and store in nnml
