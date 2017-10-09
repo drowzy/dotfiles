@@ -1,12 +1,12 @@
 {
     "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Atom One Dark",
-    "editor.fontSize": 11,
+    "workbench.colorTheme": "Argon — Noble Theme",
+    "editor.fontSize": 14,
     "editor.fontFamily": "Hasklig",
     "editor.fontLigatures": true,
     "editor.lineNumbers": "relative",
     "editor.formatOnSave": false,
-    "terminal.integrated.fontSize": 11,
+    "terminal.integrated.fontSize": 14,
     "vim.easymotion": true,
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
@@ -41,13 +41,27 @@
                 "command": "workbench.action.files.save"
             }]
         },
+        {
+            "before": ["<leader>", "f", "f"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.files.openFile"
+            }]
+        },
+        {
+            "before": ["<leader>", "f", "e"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.openGlobalSettings"
+            }]
+        },
         // Git
         // open git extension
         {
             "before": ["<leader>", "g", "s"],
             "after": [],
             "commands": [{
-                "command": "workbench.view.git"
+                "command": "workbench.view.scm"
             }]
         },
         // project
