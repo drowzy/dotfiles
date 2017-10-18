@@ -12,6 +12,7 @@
     "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
+    "vim.visualstar": true,
     "vim.insertModeKeyBindings": [{
         "before": ["f", "d"],
         "after": ["<Esc>"]
@@ -55,6 +56,14 @@
                 "command": "workbench.action.openGlobalSettings"
             }]
         },
+        {
+            "before": ["<leader>", "f", "t"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.view.explorer"
+            }]
+        },
+
         // Git
         // open git extension
         {
