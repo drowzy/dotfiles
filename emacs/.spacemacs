@@ -456,6 +456,8 @@ you should place you code here."
    fsharp-indent-offset 2
    js2-basic-offset 2
    js2-indent-level 2
+   js2-include-node-externs t
+   js2-strict-missing-semi-warning nil
    ;; web-mode
    css-indent-offset 2
    web-mode-markup-indent-offset 2
