@@ -148,8 +148,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         doom-one
+   dotspacemacs-themes '(doom-vibrant
+                         spacemacs-dark
                          zerodark
                          doom-vibrant)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -300,8 +300,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (setq neo-theme 'icons)
 
-  (spacemacs/cycle-spacemacs-theme)
-  (setq spaceline-highlight-face-func 'spaceline-highlight-face-default)
+  ;; (spacemacs/cycle-spacemacs-theme)
+  ;; (setq spaceline-highlight-face-func 'spaceline-highlight-face-default)
   (setq powerline-default-separator 'arrow)
 
   ;; (doom-themes-neotree-config)
@@ -309,19 +309,22 @@ before packages are loaded. If you are unsure, you should try in setting them in
    browse-url-browser-function 'browse-url-generic
    browse-url-generic-program "google-chrome")
 
+  ;; (use-package spaceline-all-the-icons
+  ;;   :after spaceline
+  ;;   :config (progn
+  ;;             ;; (spaceline-all-the-icons--setup-neotree)
+  ;;             (spaceline-all-the-icons-theme)
+  ;;            (setq spaceline-all-the-icons-icon-set-modified 'chain
+  ;;                   spaceline-all-the-icons-separators-type 'arrow
+  ;;                   spaceline-all-the-icons-icon-set-window-numbering 'solid
+  ;;                   spaceline-all-the-icons-primary-separator ""
+  ;;                   )
+  ;;             (spaceline-toggle-hud-on)
+  ;;             )
+  ;;   )
   (use-package spaceline-all-the-icons
     :after spaceline
-    :config (progn
-              (spaceline-all-the-icons--setup-neotree)
-              (spaceline-all-the-icons-theme)
-              (setq spaceline-all-the-icons-icon-set-modified 'chain
-                    spaceline-all-the-icons-separators-type 'arrow
-                    spaceline-all-the-icons-icon-set-window-numbering 'solid
-                    spaceline-all-the-icons-primary-separator ""
-                    )
-              (spaceline-toggle-hud-on)
-              )
-    )
+    :config (spaceline-all-the-icons-theme))
   )
 
 (defun dotspacemacs/user-config ()
