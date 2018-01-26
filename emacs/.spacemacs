@@ -52,6 +52,14 @@ values."
                markdown-live-preview-engine 'vmd)
      (org :variables
           org-enable-github-support t
+          org-projectile-file "~/dev/notes/TODOS.org"
+          org-enable-org-journal-support t
+          org-journal-dir "~/dev/notes/journal/"
+          org-journal-file-format "%Y-%m-%d"
+          org-journal-date-prefix "#+TITLE: "
+          org-journal-date-format "%A, %B %d %Y"
+          org-journal-time-prefix "* "
+          org-journal-time-format ""
           org-enable-bootstrap-support t
           org-enable-reveal-js-support t)
      javascript
