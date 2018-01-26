@@ -460,6 +460,7 @@ you should place you code here."
    js2-basic-offset 2
    js2-indent-level 2
    js2-include-node-externs t
+   js2-global-externs '("module" "require" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON")
    js2-strict-missing-semi-warning nil
    ;; web-mode
    css-indent-offset 2
