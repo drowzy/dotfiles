@@ -78,37 +78,37 @@
     {
         "key": "j",
         "command": "list.focusDown",
-        "when": "listFocus"
+        "when": "listFocus && !inputFocus"
     },
     {
         "key": "k",
         "command": "list.focusUp",
-        "when": "listFocus"
+        "when": "listFocus && !inputFocus"
     },
     {
         "key": "h",
         "command": "list.collapse",
-        "when": "listFocus"
+        "when": "listFocus && !inputFocus"
     },
     {
         "key": "l",
         "command": "list.select",
-        "when": "listFocus"
+        "when": "listFocus && !inputFocus"
     },
     // Navigate to editor
     {
         "key": "space 1",
         "command": "workbench.action.focusFirstEditorGroup",
-        "when": "listFocus"
+        "when": "listFocus && !inputFocus"
     },
     {
         "key": "space 2",
         "command": "workbench.action.focusSecondEditorGroup",
-        "when": "listFocus"
+        "when": "listFocus && !inputFocus"
     },
     {
         "key": "space 3",
         "command": "workbench.action.focusThirdditorGroup",
-        "when": "listFocus"
+        "when": "listFocus && !inputFocus"
     }
 ]

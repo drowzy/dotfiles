@@ -1,6 +1,6 @@
 {
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Argon — Noble Theme",
+    "workbench.iconTheme": "vscode-great-icons",
+    "workbench.colorTheme": "Atom One Dark",
     "editor.fontSize": 14,
     "editor.fontFamily": "Hasklig",
     "editor.fontLigatures": true,
@@ -10,6 +10,7 @@
     "vim.easymotion": true,
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
+    "vim.leader": "<space>",
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
     "vim.visualstar": true,
@@ -110,6 +111,13 @@
                 "command": "editor.action.showHover"
             }]
         },
+        {
+            "before": ["<leader>", "t", "g"],
+            "after": [],
+            "commands": [{
+                "command": "editor.action.goToDeclaration"
+            }]
+        },
         // buffers
         // close buffer
         {
@@ -186,7 +194,6 @@
             }]
         }
     ],
-    "vim.leader": "<space>",
     "vim.handleKeys": {
         "<C-a>": false,
         "<C-f>": false
@@ -205,10 +212,31 @@
     "[json]": {
         "editor.tabSize": 2
     },
+    "[elixir]": {
+        "editor.tabSize": 2
+    },
+    "[ocaml]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
     "[reason]": {
         "editor.tabSize": 2
     },
     "vsicons.dontShowNewVersionMessage": true,
-    "vim.disableAnnoyingNeovimMessage": true
+    "vim.disableAnnoyingNeovimMessage": true,
+    "mssql.connections": [
+        {
+            "server": "localhost",
+            "database": "PlugAndTrade",
+            "authenticationType": "SqlLogin",
+            "user": "sa",
+            "password": "",
+            "emptyPasswordInput": false,
+            "savePassword": true,
+            "profileName": "sql-local"
+        }
+    ],
+    "window.menuBarVisibility": "toggle",
+    "window.zoomLevel": -1
     // JSON
 }
