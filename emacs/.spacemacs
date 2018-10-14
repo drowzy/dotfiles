@@ -18,7 +18,11 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(elm
-     helm
+     ;; helm
+     (ivy :variables
+          ivy-enable-advanced-buffer-information t
+          ivy-height 50
+          )
      fsharp
      csv
      clojure
@@ -28,6 +32,7 @@ values."
      ansible
      windows-scripts
      shell-scripts
+     protobuf
      ;; (treemacs :variables
      ;;           treemacs-use-filewatch-mode t)
      yaml
@@ -156,10 +161,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-vibrant
-                         spacemacs-dark
-                         zerodark
-                         doom-vibrant)
+   dotspacemacs-themes '(zerodark
+                         doom-vibrant
+                         spacemacs-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -304,7 +308,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 (defun dotspacemacs/user-config/display ()
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t  ; if nil, italics is universally disabled
-        doom-one-brighter-modeline nil)
+        Doom-One-brighter-modeline nil)
 
   (setq neo-theme 'icons)
 
@@ -342,46 +346,50 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
+  (setq-default omnisharp-expected-server-version "1.30.1")
+
   ;; Autocompletion
   (global-company-mode)
   (yas-global-mode)
   (editorconfig-mode 1)
+  (use-package url-util)
   (setq create-lockfiles nil)
   ;;
   (evil-leader/set-key "q q" 'spacemacs/frame-killer)
   ;; (setq neo-window-position 'right)
   (dotspacemacs/user-config/display)
   ;; reason
-  (defun chomp-end (str)
-    "Chomp tailing whitespace from STR."
-    (replace-regexp-in-string (rx (* (any " \t\n")) eos)
-                              ""
-                              str))
+  (defun shell-cmd (cmd)
+  "Returns the stdout output of a shell command or nil if the command returned
+   an error"
+  (car (ignore-errors (apply 'process-lines (split-string cmd)))))
 
-  (let ((support-base-dir (concat (replace-regexp-in-string "refmt" "" (file-truename (chomp-end (shell-command-to-string "which refmt")))) ".."))
-        (merlin-base-dir (concat (replace-regexp-in-string "ocamlmerlin" "" (file-truename (chomp-end (shell-command-to-string "which ocamlmerlin")))) "..")))
-    ;; Add npm merlin.el to the emacs load path and tell emacs where to find ocamlmerlin
-    (add-to-list 'load-path (concat merlin-base-dir "/share/emacs/site-lisp/"))
-    (setq merlin-command (concat merlin-base-dir "/bin/ocamlmerlin"))
+  (let* ((refmt-bin (or (shell-cmd "refmt ----where")
+                      (shell-cmd "which refmt")))
+       (merlin-bin (shell-cmd "which ocamlmerlin"))
+       (merlin-base-dir (when merlin-bin
+                          (replace-regexp-in-string "bin/ocamlmerlin$" "" merlin-bin))))
+  ;; Add npm merlin.el to the emacs load path and tell emacs where to find ocamlmerlin
+  (when merlin-bin
+    (add-to-list 'load-path (concat merlin-base-dir "share/emacs/site-lisp/"))
+    (setq merlin-command merlin-bin))
 
-    ;; Add npm reason-mode to the emacs load path and tell emacs where to find refmt
-    (add-to-list 'load-path (concat support-base-dir "/share/emacs/site-lisp"))
-    (setq refmt-command (concat support-base-dir "/bin/refmt")))
+  (when refmt-bin
+    (setq refmt-command refmt-bin)))
 
-  (require 'reason-mode)
-  (require 'merlin)
-  (add-hook 'reason-mode-hook (lambda ()
-                                (add-hook 'before-save-hook 'refmt-before-save)
-                                (merlin-mode)))
+(require 'reason-mode)
+(require 'merlin)
+(add-hook 'reason-mode-hook (lambda ()
+                              (add-hook 'before-save-hook 'refmt-before-save)
+                              (merlin-mode)))
 
-  (setq merlin-ac-setup t)
-  ;;
-  (eval-after-load "alchemist"
-    '(defun alchemist-company--wait-for-doc-buffer ()
-       (setf num 50)
-       (while (and (not alchemist-company-doc-lookup-done)
-                   (> (decf num) 1))
-         (sit-for 0.01))))
+(setq merlin-ac-setup t)  ;;
+  ;; (eval-after-load "alchemist"
+  ;;   '(defun alchemist-company--wait-for-doc-buffer ()
+  ;;      (setf num 50)
+  ;;      (while (and (not alchemist-company-doc-lookup-done)
+  ;;                  (> (decf num) 1))
+  ;;        (sit-for 0.01))))
   ;; artist mode
   (defun artist-mode-toggle-emacs-state ()
     (if artist-mode
@@ -419,7 +427,7 @@ you should place you code here."
    'org-babel-load-languages
    '(
      (python . t)
-     (sh . t)
+     (shell . t)
      (js . t)
      (http . t)
      ))
@@ -534,7 +542,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (clojure-mode ghub iedit evil multiple-cursors hydra flycheck cider yasnippet magit helm-core company markdown-mode alert projectile org-plus-contrib helm magit-popup spaceline-all-the-icons erlang git-commit zerodark-theme yapfify yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe vagrant-tramp vagrant uuidgen utop use-package tuareg toc-org tagedit sql-indent spaceline smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restclient-helm restart-emacs rbenv ranger rake rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode powershell popwin pip-requirements persp-mode paradox ox-twbs ox-reveal ox-gfm orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file omnisharp ocp-indent ob-restclient ob-http ob-elixir nginx-mode neotree multi-term move-text mmm-mode minitest merlin markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode js2-refactor js-doc jinja2-mode insert-shebang info+ indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy fsharp-mode flycheck-pos-tip flycheck-mix flycheck-credo flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emmet-mode elisp-slime-nav editorconfig dumb-jump doom-themes dockerfile-mode docker diff-hl deft define-word cython-mode csv-mode company-web company-tern company-statistics company-shell company-restclient company-ansible company-anaconda column-enforce-mode color-identifiers-mode coffee-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby bundler auto-yasnippet auto-highlight-symbol auto-compile ansible-doc ansible alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (org-mime ivy-rich flycheck-elm doom-modeline counsel window-purpose avy ivy iedit evil multiple-cursors hydra flycheck cider yasnippet magit helm-core company markdown-mode alert projectile org-plus-contrib helm magit-popup spaceline-all-the-icons erlang git-commit zerodark-theme yapfify yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vmd-mode vi-tilde-fringe vagrant-tramp vagrant uuidgen utop use-package tuareg toc-org tagedit sql-indent spaceline smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restclient-helm restart-emacs rbenv ranger rake rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort purple-haze-theme pug-mode powershell popwin pip-requirements persp-mode paradox ox-twbs ox-reveal ox-gfm orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file omnisharp ocp-indent ob-restclient ob-http ob-elixir nginx-mode neotree multi-term move-text mmm-mode minitest merlin markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode js2-refactor js-doc jinja2-mode insert-shebang info+ indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy fsharp-mode flycheck-pos-tip flycheck-mix flycheck-credo flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emmet-mode elisp-slime-nav editorconfig dumb-jump doom-themes dockerfile-mode docker diff-hl deft define-word cython-mode csv-mode company-web company-tern company-statistics company-shell company-restclient company-ansible company-anaconda column-enforce-mode color-identifiers-mode coffee-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby bundler auto-yasnippet auto-highlight-symbol auto-compile ansible-doc ansible alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(sql-connection-alist
    (quote
     (("postit_postgres"

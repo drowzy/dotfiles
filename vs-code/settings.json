@@ -18,7 +18,7 @@
         "before": ["f", "d"],
         "after": ["<Esc>"]
     }],
-    "vim.otherModesKeyBindingsNonRecursive": [{
+    "vim.normalModeKeyBindingsNonRecursive": [{
             "before": ["<leader>", ";"],
             "after": [],
             "commands": [{
@@ -152,6 +152,27 @@
                 "command": "workbench.action.closeWindow"
             }]
         },
+        {
+            "before": ["<leader>", "w", "l"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.focusNextGroup"
+            }]
+        },
+        {
+            "before": ["<leader>", "w", "m"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.maximizeEditor"
+            }]
+        },
+        {
+            "before": ["<leader>", "w", "h"],
+            "after": [],
+            "commands": [{
+                "command": "workbench.action.focusPreviousGroup"
+            }]
+        },
         // navigate to sidebar
         {
             "before": ["<leader>", "0"],
@@ -237,6 +258,12 @@
         }
     ],
     "window.menuBarVisibility": "toggle",
-    "window.zoomLevel": -1
+    "window.zoomLevel": -1,
+    "reason.diagnostics.tools": [
+        "merlin",
+        "bsb"
+    ],
+    "extensions.autoUpdate": false,
+    "omnisharp.loggingLevel": "debug"
     // JSON
 }
