@@ -231,7 +231,8 @@
         "editor.tabSize": 2
     },
     "[json]": {
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
+        "editor.defaultFormatter": "vscode.json-language-features"
     },
     "[elixir]": {
         "editor.tabSize": 2
@@ -254,16 +255,35 @@
             "password": "",
             "emptyPasswordInput": false,
             "savePassword": true,
-            "profileName": "sql-local"
+            "profileName": "sql-local",
+            "connectTimeout": 15,
+            "encrypt": false,
+            "applicationName": "vscode-mssql"
+        },
+        {
+            "server": "localhost",
+            "database": "master",
+            "authenticationType": "SqlLogin",
+            "user": "sa",
+            "password": "",
+            "emptyPasswordInput": false,
+            "savePassword": true,
+            "profileName": "sql-express-bag"
         }
     ],
     "window.menuBarVisibility": "toggle",
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
     "reason.diagnostics.tools": [
         "merlin",
         "bsb"
     ],
     "extensions.autoUpdate": false,
-    "omnisharp.loggingLevel": "debug"
+    "omnisharp.loggingLevel": "debug",
+    "omnisharp.path": "latest",
+    "FSharp.enableTouchBar": false,
+    "FSharp.enableTreeView": false,
+    "FSharp.fsacRuntime": "netcore",
+    "FSharp.logLanguageServiceRequests": "both",
+    "rust-analyzer.serverPath": "rust-analyzer"
     // JSON
 }
