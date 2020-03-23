@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 bold=$(tput bold)
 normal=$(tput sgr0)
-EMACS_V="24.5"
+EMACS_V="26.3"
 URL="http://ftp.gnu.org/gnu/emacs/emacs-$EMACS_V.tar.gz"
 INSTALLED_EMACS_VERSION=`emacs --version | head -n1 | grep -oP "([0-9]+\.?)+"`
 
